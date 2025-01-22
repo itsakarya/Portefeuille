@@ -11,16 +11,15 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../ui/button';
 
 const ProjectModal = ({ project, onClose }: IProjectModalProps) => {
-
-  const navigate = useNavigate()
-  const handleLinkClick = (link : string) => {
-    console.log(link)
-      if(!link.length){
-        navigate('/coming-soon')
-        return 
-      }
-      window.open(link,'_blank')
-  }
+  const navigate = useNavigate();
+  const handleLinkClick = (link: string) => {
+    console.log(link);
+    if (!link.length) {
+      navigate('/coming-soon');
+      return;
+    }
+    window.open(link, '_blank');
+  };
 
   return (
     <Dialog open={true} onOpenChange={(isOpen) => !isOpen && onClose()}>
@@ -59,7 +58,7 @@ const ProjectModal = ({ project, onClose }: IProjectModalProps) => {
             {/* Links */}
             <div className="flex space-x-4">
               <Button
-              variant='ghost'
+                variant="ghost"
                 className="flex items-center text-gray-600 hover:text-gray-900"
                 onClick={() => handleLinkClick(project.github)}
               >
@@ -67,7 +66,7 @@ const ProjectModal = ({ project, onClose }: IProjectModalProps) => {
                 View Code
               </Button>
               <Button
-              variant='ghost'
+                variant="ghost"
                 onClick={() => handleLinkClick(project.live)}
                 className="flex items-center text-gray-600 hover:text-gray-900"
               >

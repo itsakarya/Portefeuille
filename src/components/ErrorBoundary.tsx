@@ -1,4 +1,8 @@
-import { useRouteError, isRouteErrorResponse, useNavigate } from 'react-router-dom';
+import {
+  useRouteError,
+  isRouteErrorResponse,
+  useNavigate,
+} from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { AlertTriangle, ArrowLeft, RefreshCcw } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
@@ -9,7 +13,7 @@ const ErrorBoundary = () => {
   const { isDark } = useTheme();
 
   let errorMessage = 'An unexpected error occurred';
-  
+
   if (isRouteErrorResponse(error)) {
     errorMessage = error.data?.message || `${error.status} ${error.statusText}`;
   } else if (error instanceof Error) {
@@ -19,19 +23,19 @@ const ErrorBoundary = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Gradient Background */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
         className={`absolute inset-0 ${
-          isDark 
+          isDark
             ? 'bg-gradient-to-br from-red-900 via-gray-900 to-purple-900'
             : 'bg-gradient-to-br from-red-500 via-gray-500 to-purple-500'
         }`}
       />
-      
+
       {/* Animated gradient overlay */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.7 }}
         transition={{ duration: 1, delay: 0.5 }}
@@ -57,20 +61,18 @@ const ErrorBoundary = () => {
             transition={{
               duration: 2,
               repeat: Infinity,
-              repeatType: "reverse",
+              repeatType: 'reverse',
             }}
             className="inline-block mb-8"
           >
             <AlertTriangle className="w-24 h-24 text-white" />
           </motion.div>
-          
+
           <h1 className="text-5xl font-bold mb-6 text-white drop-shadow-lg">
             Something Went Wrong
           </h1>
-          
-          <p className="text-xl mb-8 text-white/90">
-            {errorMessage}
-          </p>
+
+          <p className="text-xl mb-8 text-white/90">{errorMessage}</p>
 
           <div className="flex justify-center gap-4">
             <motion.button
@@ -95,13 +97,13 @@ const ErrorBoundary = () => {
           </div>
 
           {/* Decorative circles */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
             className="absolute -top-20 -left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl"
           />
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}

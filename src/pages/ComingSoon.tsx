@@ -9,19 +9,19 @@ const ComingSoon = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Gradient Background */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
         className={`absolute inset-0 ${
-          isDark 
+          isDark
             ? 'bg-gradient-to-br from-indigo-900 via-purple-900 to-gray-900'
             : 'bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500'
         }`}
       />
-      
+
       {/* Animated gradient overlay */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.7 }}
         transition={{ duration: 1, delay: 0.5 }}
@@ -47,25 +47,22 @@ const ComingSoon = () => {
             transition={{
               duration: 2,
               repeat: Infinity,
-              repeatType: "reverse",
+              repeatType: 'reverse',
             }}
             className="inline-block mb-8"
           >
             <Construction className="w-24 h-24 text-white" />
           </motion.div>
-          
+
           <h1 className="text-5xl font-bold mb-6 text-white drop-shadow-lg">
             Coming Soon
           </h1>
-          
+
           <p className="text-xl mb-12 text-white/90">
             We're working hard to bring you something amazing. Stay tuned!
           </p>
 
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               to="/"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white transition-colors duration-300"
@@ -76,13 +73,13 @@ const ComingSoon = () => {
           </motion.div>
 
           {/* Decorative circles */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
             className="absolute -top-20 -left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl"
           />
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}

@@ -11,7 +11,9 @@ import { cn } from '@/lib/utils';
 const Projects = () => {
   const navigate = useNavigate();
   const { isDark } = useTheme();
-  const [selectedProject, setSelectedProject] = useState<IProjects | null>(null);
+  const [selectedProject, setSelectedProject] = useState<IProjects | null>(
+    null
+  );
 
   const onSelectProject = useCallback(
     (data: IProjects | null = null) => {
