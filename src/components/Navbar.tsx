@@ -1,37 +1,37 @@
-import { useState, useEffect } from "react"
-import { Menu, X, Download } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
-import { NAV_ITEMS } from "@/constants.ts/navbar-data"
-import { cn } from "@/lib/utils"
+import { useState, useEffect } from 'react';
+import { Menu, X, Download } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { NAV_ITEMS } from '@/constants.ts/navbar-data';
+import { cn } from '@/lib/utils';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "unset"
+      document.body.style.overflow = 'unset';
     }
     return () => {
-      document.body.style.overflow = "unset"
-    }
-  }, [isOpen])
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const menuVariants = {
     closed: {
-      x: "100%",
+      x: '100%',
       transition: {
-        type: "spring",
+        type: 'spring',
         stiffness: 400,
         damping: 40,
       },
@@ -39,12 +39,12 @@ const Navbar = () => {
     open: {
       x: 0,
       transition: {
-        type: "spring",
+        type: 'spring',
         stiffness: 400,
         damping: 40,
       },
     },
-  }
+  };
 
   const menuItemVariants = {
     closed: { opacity: 0, y: 20 },
@@ -53,26 +53,26 @@ const Navbar = () => {
       y: 0,
       transition: {
         delay: i * 0.1,
-        type: "spring",
+        type: 'spring',
         stiffness: 300,
         damping: 24,
       },
     }),
-  }
+  };
 
   return (
     <nav
-      className={cn("fixed w-full z-50 transition-all duration-300", {
-        "bg-white/80 backdrop-blur-sm shadow-sm": isScrolled,
-        "bg-transparent": !isScrolled,
+      className={cn('fixed w-full z-50 transition-all duration-300', {
+        'bg-white/80 backdrop-blur-sm shadow-sm': isScrolled,
+        'bg-transparent': !isScrolled,
       })}
     >
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <h1
-            className={cn("text-2xl font-bold transition-colors", {
-              "text-gray-800": isScrolled,
-              "text-white": !isScrolled,
+            className={cn('text-2xl font-bold transition-colors', {
+              'text-gray-800': isScrolled,
+              'text-white': !isScrolled,
             })}
           >
             {NAV_ITEMS.LOGO}
@@ -84,9 +84,9 @@ const Navbar = () => {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className={cn("transition-colors", {
-                  "text-gray-600 hover:text-gray-900": isScrolled,
-                  "text-white/80 hover:text-white": !isScrolled,
+                className={cn('transition-colors', {
+                  'text-gray-600 hover:text-gray-900': isScrolled,
+                  'text-white/80 hover:text-white': !isScrolled,
                 })}
               >
                 {item}
@@ -95,13 +95,13 @@ const Navbar = () => {
             <button
               onClick={() =>
                 window.open(
-                  "https://drive.google.com/file/d/1rBqgnJJxQj8Y6tWLXeLkqLBtz9tmhQLd/view?usp=sharing",
-                  "_blank",
+                  'https://drive.google.com/file/d/1rBqgnJJxQj8Y6tWLXeLkqLBtz9tmhQLd/view?usp=sharing',
+                  '_blank'
                 )
               }
-              className={cn("flex items-center transition-colors gap-2", {
-                "text-gray-600 hover:text-gray-900": isScrolled,
-                "text-white/80 hover:text-white": !isScrolled,
+              className={cn('flex items-center transition-colors gap-2', {
+                'text-gray-600 hover:text-gray-900': isScrolled,
+                'text-white/80 hover:text-white': !isScrolled,
               })}
             >
               Resume
@@ -110,11 +110,19 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden z-50" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+          <button
+            className="md:hidden z-50"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
             {isOpen ? (
-              <X className={cn("text-gray-600", { "text-white": !isScrolled })} />
+              <X
+                className={cn('text-gray-600', { 'text-white': !isScrolled })}
+              />
             ) : (
-              <Menu className={cn("text-gray-600", { "text-white": !isScrolled })} />
+              <Menu
+                className={cn('text-gray-600', { 'text-white': !isScrolled })}
+              />
             )}
           </button>
 
@@ -153,10 +161,10 @@ const Navbar = () => {
                     variants={menuItemVariants}
                     onClick={() => {
                       window.open(
-                        "https://drive.google.com/file/d/1rBqgnJJxQj8Y6tWLXeLkqLBtz9tmhQLd/view?usp=sharing",
-                        "_blank",
-                      )
-                      setIsOpen(false)
+                        'https://drive.google.com/file/d/1rBqgnJJxQj8Y6tWLXeLkqLBtz9tmhQLd/view?usp=sharing',
+                        '_blank'
+                      );
+                      setIsOpen(false);
                     }}
                     className="text-2xl transition-colors flex gap-2 items-center text-white hover:text-gray-400"
                     whileHover={{ scale: 1.1 }}
@@ -172,8 +180,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
-
+export default Navbar;

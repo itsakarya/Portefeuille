@@ -1,22 +1,14 @@
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Experience from './components/Experience';
-import Projects from './components/Project';
-import Contact from './components/Contact';
+import { RouterProvider } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
+import { router } from './routes';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Projects />
-      <Contact />
-    </div>
+    <ThemeProvider>
+      <div className="content-wrapper hardware-accelerated theme-transition min-h-screen bg-gray-50 dark:bg-gray-900">
+        <RouterProvider router={router} />
+      </div>
+    </ThemeProvider>
   );
 }
 
