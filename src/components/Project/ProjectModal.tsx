@@ -7,8 +7,21 @@ import {
   DialogDescription,
 } from '../ui/dialog';
 import { IProjectModalProps } from '../../types/project';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '../ui/button';
 
 const ProjectModal = ({ project, onClose }: IProjectModalProps) => {
+
+  const navigate = useNavigate()
+  const handleLinkClick = (link : string) => {
+    console.log(link)
+      if(!link.length){
+        navigate('/coming-soon')
+        return 
+      }
+      window.open(link,'_blank')
+  }
+
   return (
     <Dialog open={true} onOpenChange={(isOpen) => !isOpen && onClose()}>
       <DialogContent className="z-50  bg-black/50 p-0">
@@ -45,24 +58,22 @@ const ProjectModal = ({ project, onClose }: IProjectModalProps) => {
 
             {/* Links */}
             <div className="flex space-x-4">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Button
+              variant='ghost'
                 className="flex items-center text-gray-600 hover:text-gray-900"
+                onClick={() => handleLinkClick(project.github)}
               >
                 <Github className="h-5 w-5 mr-1" />
                 View Code
-              </a>
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
+              </Button>
+              <Button
+              variant='ghost'
+                onClick={() => handleLinkClick(project.live)}
                 className="flex items-center text-gray-600 hover:text-gray-900"
               >
                 <ExternalLink className="h-5 w-5 mr-1" />
                 Live Demo
-              </a>
+              </Button>
             </div>
           </div>
         </div>

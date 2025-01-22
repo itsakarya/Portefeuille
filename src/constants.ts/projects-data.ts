@@ -15,7 +15,7 @@ const projects = [
     image: '/ycDirectory.png',
     tech: ['Next.js', 'ShadCn', 'Tailwind', 'sentry', 'sanity'],
     github: 'https://github.com/itsakarya/YCDirectory',
-    live: '#',
+    live: '',
   },
   {
     title: 'Hirrd',
@@ -27,8 +27,8 @@ const projects = [
     • Application tracking system`,
     image: '/hirrd.png',
     tech: ['React', 'TypeScript', 'Shadcn', 'Tailwind', 'superbase'],
-    github: '#',
-    live: '#',
+    github: '',
+    live: '',
   },
   {
     title: 'Trimmr',
